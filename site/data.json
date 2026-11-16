@@ -1,0 +1,101 @@
+{
+ "generated_at": "2026-11-16T20:13:54+00:00",
+ "vm": {
+  "uptime_s": 855.55,
+  "load1": 0.69,
+  "load5": 0.91,
+  "load15": 0.45,
+  "cpus": 4,
+  "mem_total_bytes": 8320933888,
+  "mem_avail_bytes": 705372160,
+  "mem_used_bytes": 7615561728,
+  "mem_pct": 91.5,
+  "disk_total_bytes": 161043427328,
+  "disk_used_bytes": 267501568,
+  "disk_free_bytes": 159700369408,
+  "disk_pct": 0.2,
+  "hostname": "htch-runtime",
+  "uptime_human": "14 min"
+ },
+ "subscription": {
+  "plan": "Free",
+  "weekly_pct": 3.0,
+  "reset": "Nov 20 at 1:55 AM -07",
+  "additional_pct": 0.0,
+  "additional_left": "1B tokens",
+  "error": null
+ },
+ "connectors": {
+  "github": {
+   "connected": true,
+   "login": "Andri-wdiansah",
+   "error": null
+  },
+  "vercel": {
+   "connected": true,
+   "username": "aw-rnd",
+   "plan": "hobby",
+   "error": null
+  }
+ },
+ "deployments": [],
+ "deployments_error": "Vercel API request failed (403: forbidden). Not authorized: Trying to access resource under scope \"aw-rnd95\". You must re-authenticate to this scope or use a token with access to this scope.",
+ "history": [
+  {
+   "ts": 1794773729,
+   "weekly_pct": 1.0,
+   "additional_left": "1B tokens",
+   "load1": 1.36,
+   "mem_pct": 91.6,
+   "disk_pct": 0.1,
+   "uptime_s": 1562.25
+  },
+  {
+   "ts": 1794778749,
+   "weekly_pct": 2.0,
+   "additional_left": "1B tokens",
+   "load1": 2.59,
+   "mem_pct": 75.7,
+   "disk_pct": 0.2,
+   "uptime_s": 76.77
+  },
+  {
+   "ts": 1794782549,
+   "weekly_pct": 2.0,
+   "additional_left": "1B tokens",
+   "load1": 0.28,
+   "mem_pct": 90.3,
+   "disk_pct": 0.2,
+   "uptime_s": 3878.52
+  },
+  {
+   "ts": 1794789541,
+   "weekly_pct": 2.0,
+   "additional_left": "1B tokens",
+   "load1": 2.08,
+   "mem_pct": 86.6,
+   "disk_pct": 0.2,
+   "uptime_s": 364.29
+  },
+  {
+   "ts": 1794847189,
+   "weekly_pct": 2.0,
+   "additional_left": "1B tokens",
+   "load1": 1.18,
+   "mem_pct": 80.1,
+   "disk_pct": 0.2,
+   "uptime_s": 189.94
+  },
+  {
+   "ts": 1794860034,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.69,
+   "mem_pct": 91.5,
+   "disk_pct": 0.2,
+   "uptime_s": 855.55
+  }
+ ],
+ "history_points": 6,
+ "snapshot_appended": true
+}

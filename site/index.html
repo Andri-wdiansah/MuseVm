@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hirthcrea — Muse status</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F04E23'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='700' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div class="brand-text">
+        <div class="brand-name">Hirthcrea</div>
+        <div class="brand-sub">Muse status</div>
+      </div>
+    </div>
+
+    <div class="nav-label">Status</div>
+    <nav class="nav">
+      <button class="nav-item active" data-view="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+        <span>Overview</span>
+      </button>
+      <button class="nav-item" data-view="vm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="10" y="10" width="4" height="4" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+        <span>VM</span>
+      </button>
+      <button class="nav-item" data-view="tokens">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15.5 9.5c-.8-1-2-1.5-3.5-1.5-1.9 0-3.2 1-3.2 2.4 0 3.4 6.4 1.7 6.4 5 0 1.4-1.4 2.4-3.2 2.4-1.6 0-2.9-.6-3.7-1.6"/></svg>
+        <span>Tokens</span>
+      </button>
+      <button class="nav-item" data-view="deployments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8-.8-.7-2.2-.7-3 .8z"/><path d="M12 15l-3-3a22 22 0 0 1 2-4A12.7 12.7 0 0 1 21 2c0 2.7-.9 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M15 12v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg>
+        <span>Deployments</span>
+        <span class="nav-badge" id="depBadge">–</span>
+      </button>
+      <button class="nav-item" data-view="connectors">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><path d="M8 12h8"/></svg>
+        <span>Connectors</span>
+      </button>
+    </nav>
+
+    <div class="side-widget">
+      <div class="side-ring">
+        <svg viewBox="0 0 44 44" width="44" height="44">
+          <circle class="ring-track" cx="22" cy="22" r="18" />
+          <circle class="ring-fill" id="sideRing" cx="22" cy="22" r="18" />
+        </svg>
+        <span class="side-ring-pct" id="sideRingPct">–</span>
+      </div>
+      <div class="side-widget-text">
+        <div class="side-widget-title">Weekly tokens</div>
+        <div class="side-widget-sub" id="sideWeeklySub">of free limit used</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <header class="topbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="searchInput" type="text" placeholder="Search deployments…" autocomplete="off">
+        <kbd>⌘K</kbd>
+      </div>
+      <div class="topbar-right">
+        <span class="date-pill" id="topDate">–</span>
+        <span class="live-pill"><span class="live-dot"></span>Live</span>
+        <span class="updated" id="updatedAt">Updated –</span>
+        <div class="avatar" id="avatar">A</div>
+      </div>
+    </header>
+
+    <div class="views">
+
+      <!-- ===== OVERVIEW ===== -->
+      <section class="view active" id="view-overview">
+        <div class="page-head">
+          <div>
+            <h1>Hirthcrea today</h1>
+            <p class="page-sub" id="ovSub">Loading status…</p>
+          </div>
+          <div class="page-head-actions">
+            <span class="pill pill-green"><span class="dot green"></span>All systems live</span>
+            <span class="pill">Daily refresh</span>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card kpi hero">
+            <div class="kpi-label"><span class="kpi-ico">◈</span>CPU load · 1 min</div>
+            <div class="kpi-value"><span class="count" id="kpiCpu" data-decimals="2">–</span></div>
+            <div class="kpi-sub" id="kpiCpuSub">–</div>
+            <div class="spark" id="kpiCpuSpark"></div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label"><span class="kpi-ico">▦</span>Memory</div>
+            <div class="kpi-value"><span class="count" id="kpiMem" data-decimals="1">–</span><span class="unit">%</span></div>
+            <div class="kpi-sub" id="kpiMemSub">–</div>
+            <div class="spark" id="kpiMemSpark"></div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label"><span class="kpi-ico">◫</span>Disk</div>
+            <div class="kpi-value"><span class="count" id="kpiDisk" data-decimals="1">–</span><span class="unit">%</span></div>
+            <div class="kpi-sub" id="kpiDiskSub">–</div>
+            <div class="spark" id="kpiDiskSpark"></div>
+          </div>
+          <div class="card kpi">
+            <div class="kpi-label"><span class="kpi-ico">◷</span>Uptime</div>
+            <div class="kpi-value" id="kpiUp">–</div>
+            <div class="kpi-sub" id="kpiUpSub">–</div>
+            <div class="spark" id="kpiUpSpark"></div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="card chart-card">
+            <div class="card-head">
+              <div>
+                <h3>Token usage history</h3>
+                <p class="card-sub">Weekly free limit used — snapshots build over time</p>
+              </div>
+              <div class="tabs" id="ovTabs">
+                <button class="tab active" data-range="24h">24h</button>
+                <button class="tab" data-range="7d">7d</button>
+                <button class="tab" data-range="30d">30d</button>
+              </div>
+            </div>
+            <div class="chart-stats">
+              <div class="chart-stat"><span class="cs-label">Now</span><span class="cs-value" id="csNow">–</span></div>
+              <div class="chart-stat"><span class="cs-label">Peak</span><span class="cs-value" id="csPeak">–</span></div>
+              <div class="chart-stat"><span class="cs-label">Snapshots</span><span class="cs-value" id="csCount">–</span></div>
+            </div>
+            <div class="chart" id="ovChart"></div>
+            <p class="chart-note" id="ovChartNote"></p>
+          </div>
+
+          <div class="side-stack">
+            <div class="card sub-card">
+              <div class="card-head">
+                <h3>Subscription</h3>
+                <span class="pill pill-orange" id="subPlan">Free</span>
+              </div>
+              <div class="sub-big"><span class="count" id="subWeeklyPct" data-decimals="0">–</span><span class="unit">%</span></div>
+              <p class="card-sub">of the free weekly limit used</p>
+              <div class="meter"><div class="meter-fill" id="subWeeklyBar"></div></div>
+              <div class="sub-rows">
+                <div class="sub-row"><span>Resets</span><strong id="subReset">–</strong></div>
+                <div class="sub-row"><span>Additional tokens</span><strong id="subAdditional">–</strong></div>
+              </div>
+            </div>
+
+            <div class="card ring-card">
+              <h3>Weekly usage</h3>
+              <p class="card-sub" id="ringSub">of free weekly limit</p>
+              <div class="big-ring">
+                <svg viewBox="0 0 140 140" width="140" height="140">
+                  <defs>
+                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FF6B35"/>
+                      <stop offset="100%" stop-color="#E8481F"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="ring-track" cx="70" cy="70" r="58" />
+                  <circle class="ring-fill big" id="ringBig" cx="70" cy="70" r="58" />
+                </svg>
+                <div class="big-ring-center"><span id="ringBigPct">–</span></div>
+              </div>
+              <p class="ring-foot" id="ringFoot">–</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== VM ===== -->
+      <section class="view" id="view-vm">
+        <div class="page-head">
+          <div>
+            <h1>Virtual machine</h1>
+            <p class="page-sub" id="vmSub">The Linux VM that runs Muse.</p>
+          </div>
+        </div>
+        <div class="kpi-grid">
+          <div class="card gauge">
+            <div class="kpi-label">CPU · load per core</div>
+            <div class="kpi-value"><span class="count" id="vmCpuPct" data-decimals="0">–</span><span class="unit">%</span></div>
+            <div class="meter"><div class="meter-fill" id="vmCpuBar"></div></div>
+            <div class="gauge-nums" id="vmLoadNums">–</div>
+          </div>
+          <div class="card gauge">
+            <div class="kpi-label">Memory</div>
+            <div class="kpi-value"><span class="count" id="vmMemPct" data-decimals="1">–</span><span class="unit">%</span></div>
+            <div class="meter"><div class="meter-fill" id="vmMemBar"></div></div>
+            <div class="gauge-nums" id="vmMemNums">–</div>
+          </div>
+          <div class="card gauge">
+            <div class="kpi-label">Disk · /home/hatch</div>
+            <div class="kpi-value"><span class="count" id="vmDiskPct" data-decimals="1">–</span><span class="unit">%</span></div>
+            <div class="meter"><div class="meter-fill" id="vmDiskBar"></div></div>
+            <div class="gauge-nums" id="vmDiskNums">–</div>
+          </div>
+          <div class="card gauge">
+            <div class="kpi-label">Uptime</div>
+            <div class="kpi-value" id="vmUp">–</div>
+            <div class="gauge-nums" id="vmHost">–</div>
+            <div class="gauge-nums muted" id="vmCpus">–</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Resource detail</h3>
+          <div class="detail-grid" id="vmDetail"></div>
+        </div>
+      </section>
+
+      <!-- ===== TOKENS ===== -->
+      <section class="view" id="view-tokens">
+        <div class="page-head">
+          <div>
+            <h1>Token history</h1>
+            <p class="page-sub" id="tokSub">Weekly free-limit usage, recorded as hourly snapshots.</p>
+          </div>
+        </div>
+        <div class="card chart-card">
+          <div class="card-head">
+            <div>
+              <h3>Usage over time</h3>
+              <p class="card-sub">Each bar is one snapshot of the weekly limit used</p>
+            </div>
+            <div class="tabs" id="tokTabs">
+              <button class="tab active" data-range="24h">24h</button>
+              <button class="tab" data-range="7d">7d</button>
+              <button class="tab" data-range="30d">30d</button>
+            </div>
+          </div>
+          <div class="chart tall" id="tokChart"></div>
+          <p class="chart-note" id="tokNote"></p>
+        </div>
+        <div class="card">
+          <h3>Snapshots</h3>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Time</th><th>Weekly limit</th><th>Additional left</th><th>CPU load</th><th>Memory</th></tr></thead>
+              <tbody id="tokTableBody"></tbody>
+            </table>
+          </div>
+          <p class="chart-note" id="tokFirst"></p>
+        </div>
+      </section>
+
+      <!-- ===== DEPLOYMENTS ===== -->
+      <section class="view" id="view-deployments">
+        <div class="page-head">
+          <div>
+            <h1>Deployments</h1>
+            <p class="page-sub">Latest deployments on Vercel.</p>
+          </div>
+        </div>
+        <div id="depList" class="dep-list"></div>
+        <div class="card empty-state" id="depEmpty" hidden>
+          <div class="empty-ico">◌</div>
+          <h3>Deployments unavailable</h3>
+          <p id="depEmptyText">Vercel could not list deployments for this connection.</p>
+          <p class="muted small">This dashboard itself is deployed on Vercel — deployment listing needs the team scope to be authorised for the Muse connection.</p>
+        </div>
+      </section>
+
+      <!-- ===== CONNECTORS ===== -->
+      <section class="view" id="view-connectors">
+        <div class="page-head">
+          <div>
+            <h1>Connectors</h1>
+            <p class="page-sub">Services linked to Muse.</p>
+          </div>
+        </div>
+        <div class="conn-grid">
+          <div class="card conn-card">
+            <div class="conn-top">
+              <div class="conn-mark gh">GH</div>
+              <span class="pill pill-green" id="ghStatus"><span class="dot green"></span>Connected</span>
+            </div>
+            <h3>GitHub</h3>
+            <p class="card-sub" id="ghLogin">–</p>
+            <p class="muted">Repositories, files, issues and pull requests through GitHub's official MCP server.</p>
+          </div>
+          <div class="card conn-card">
+            <div class="conn-top">
+              <div class="conn-mark vc">▲</div>
+              <span class="pill pill-green" id="vcStatus"><span class="dot green"></span>Connected</span>
+            </div>
+            <h3>Vercel</h3>
+            <p class="card-sub" id="vcLogin">–</p>
+            <p class="muted" id="vcNote">Projects, deployments and logs through Vercel's official MCP server.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="foot">
+      <span>Hirthcrea · Muse status dashboard</span>
+      <span id="footUpdated">–</span>
+    </footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
