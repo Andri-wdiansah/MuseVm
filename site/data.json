@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-11-16T20:13:54+00:00",
+ "generated_at": "2026-11-18T18:13:40+00:00",
  "vm": {
-  "uptime_s": 855.55,
-  "load1": 0.69,
-  "load5": 0.91,
-  "load15": 0.45,
+  "uptime_s": 1247.28,
+  "load1": 0.22,
+  "load5": 0.34,
+  "load15": 0.16,
   "cpus": 4,
-  "mem_total_bytes": 8320933888,
-  "mem_avail_bytes": 705372160,
-  "mem_used_bytes": 7615561728,
-  "mem_pct": 91.5,
+  "mem_total_bytes": 8319897600,
+  "mem_avail_bytes": 763179008,
+  "mem_used_bytes": 7556718592,
+  "mem_pct": 90.8,
   "disk_total_bytes": 161043427328,
-  "disk_used_bytes": 267501568,
-  "disk_free_bytes": 159700369408,
+  "disk_used_bytes": 397647872,
+  "disk_free_bytes": 159571976192,
   "disk_pct": 0.2,
   "hostname": "htch-runtime",
-  "uptime_human": "14 min"
+  "uptime_human": "20 min"
  },
  "subscription": {
   "plan": "Free",
@@ -94,8 +94,62 @@
    "mem_pct": 91.5,
    "disk_pct": 0.2,
    "uptime_s": 855.55
+  },
+  {
+   "ts": 1794865172,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.87,
+   "mem_pct": 87.7,
+   "disk_pct": 0.2,
+   "uptime_s": 707.93
+  },
+  {
+   "ts": 1794872411,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.03,
+   "mem_pct": 91.0,
+   "disk_pct": 0.2,
+   "uptime_s": 4389.33
+  },
+  {
+   "ts": 1794889927,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.48,
+   "mem_pct": 91.7,
+   "disk_pct": 0.2,
+   "uptime_s": 733.6
+  },
+  {
+   "ts": 1794922768,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.12,
+   "mem_pct": 91.8,
+   "disk_pct": 0.2,
+   "uptime_s": 618.34
+  },
+  {
+   "ts": 1794958788,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.4,
+   "mem_pct": 91.4,
+   "disk_pct": 0.2,
+   "uptime_s": 3608.83
+  },
+  {
+   "ts": 1795025620,
+   "weekly_pct": 3.0,
+   "additional_left": "1B tokens",
+   "load1": 0.22,
+   "mem_pct": 90.8,
+   "disk_pct": 0.2,
+   "uptime_s": 1247.28
   }
  ],
- "history_points": 6,
+ "history_points": 12,
  "snapshot_appended": true
 }
